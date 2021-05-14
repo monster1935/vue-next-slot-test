@@ -1,15 +1,30 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <test-slot>
+    <hello-world v-if="isShow" msg="Welcome to Your Vue.js App"/>
+  </test-slot>
+
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import TestSlot from './components/TestSlot.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
+    TestSlot
+  },
+  data () {
+    return {
+      isShow: false
+    }
+  },
+  mounted () {
+    setTimeout(() => {
+      this.isShow = true
+    }, 2000)
   }
 }
 </script>
